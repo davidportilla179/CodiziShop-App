@@ -1,4 +1,5 @@
 import React from 'react';
+import CartWidget from './CartWidget';
 
 const NavBar = () => {
   return (
@@ -28,7 +29,8 @@ const NavBar = () => {
               </ul>
             </li>
           </ul>
-          <div>
+          <div className="d-flex justify-content-around align-items-center">
+            <CartWidget items="3"/>
             <button className="btn btn-outline-success" type="submit">Log In</button>
             <button className="btn btn-success" type="submit">Register</button>
           </div>
