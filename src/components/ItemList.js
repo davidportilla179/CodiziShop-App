@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import Item from './Item';
 
 const itemsArray = [
-  { id: 1, title: "T-shirt", description: "Its a tshirt", stock: 10, price: "$299.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/machine_learning_tshirt_2.jpg" },
-  { id: 2, title: "Hoddie", description: "Its a hoddie", stock: 0, price: "$599.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/its_python_tshirt_1.jpg" },
-  { id: 3, title: "Shirt", description: "Its a shirt", stock: 2 , price: "$199.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/microcontroller_electronic_tshirt_2.jpg"},
+  { id: 1, title: "T-shirt", category: "tshirts", description: "Its a tshirt", stock: 10, price: "$299.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/machine_learning_tshirt_2.jpg" },
+  { id: 2, title: "Hoddie", category: "hoddies", description: "Its a hoddie", stock: 0, price: "$599.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/its_python_tshirt_1.jpg" },
+  { id: 3, title: "Shirt", category: "tshirts", description: "Its a shirt", stock: 2 , price: "$199.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/microcontroller_electronic_tshirt_2.jpg"},
 ];
 
 function getListItems() {
@@ -13,16 +13,26 @@ function getListItems() {
   });
 }
 
-const ItemList = ({ setCartItems }) => {
+const ItemList = ({ filter }) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     const list = getListItems();
     list
-      .then((data) => setItems(data))
-      .catch(err=>console.log(err));
-  }, []);
-  
+      .then((data) => {
+        filter ? setItems(data.filter(item => item.category === filter)) : setItems(data);
+      })
+      .catch(err=> console.log(err));
+
+      return () => {
+        setItems(undefined);
+      }
+  }, [filter]);
+
+  if(items === undefined) {
+    return <div>Loading...</div>
+  }
+
   return (
     <>
       <div className="row mt-4">

@@ -1,7 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const ItemDetail = ({ item, setCartItems }) => {
+const itemsArray = [
+  { id: 1, title: "T-shirt", category: "tshirts", description: "Its a tshirt", stock: 10, price: "$299.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/machine_learning_tshirt_2.jpg" },
+  { id: 2, title: "Hoddie", category: "hoddies", description: "Its a hoddie", stock: 0, price: "$599.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/its_python_tshirt_1.jpg" },
+  { id: 3, title: "Shirt", category: "tshirts", description: "Its a shirt", stock: 2 , price: "$199.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/microcontroller_electronic_tshirt_2.jpg"},
+];
+
+function getListItems() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(itemsArray), 2000);
+  });
+}
+
+const ItemDetail = ({ id, setCartItems }) => {
+  const [item, setItem] = useState();
   const [initial, setInitial] = useState(0);
+
+  useEffect(() => {
+    const list = getListItems();
+    list
+      .then((data) => setItem(data.find((item) => item.id === parseInt(id))))
+      .catch(err=> console.log(err));
+
+      return () => {
+        setItem(undefined);
+      }
+  }, [id]);
+
+  if(item === undefined) {
+    return <div>Loading...</div>
+  }
+
   const reduceInitial = () => {
     if (initial === 0) return;
     setInitial(initial - 1);
@@ -11,15 +40,18 @@ const ItemDetail = ({ item, setCartItems }) => {
     if (initial === stock) return;
     setInitial(initial + 1);
   };
+
   return (
-    <>
-      <div className="col-md-4" key={item.id}>
-        <div className="card mb-4 shadow-sm">
+    <div className="card mb-4 shadow-sm">
+      <div className="row g-0">
+        <div className="col-md-4">
           <img
             src={item.pictureUrl}
-            class="card-img-top"
+            className="img-fluid rounded-start"
             alt="..."
           />
+        </div>
+        <div className="col-md-8">
           <div className="card-body">
             <div className="row">
               <div className="col-md-6">
@@ -40,7 +72,7 @@ const ItemDetail = ({ item, setCartItems }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
