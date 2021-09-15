@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Item from './Item';
+import Spinner from "./Spinner";
 
 const itemsArray = [
   { id: 1, title: "T-shirt", category: "tshirts", description: "Its a tshirt", stock: 10, price: "$299.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/machine_learning_tshirt_2.jpg" },
@@ -14,7 +15,7 @@ function getListItems() {
 }
 
 const ItemList = ({ filter }) => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(undefined);
 
   useEffect(() => {
     const list = getListItems();
@@ -30,13 +31,13 @@ const ItemList = ({ filter }) => {
   }, [filter]);
 
   if(items === undefined) {
-    return <div>Loading...</div>
+    return <Spinner />
   }
 
   return (
     <>
       <div className="row mt-4">
-        {items.map((item) => <Item id={item.id} item={item} />)}
+        {items.map((item) => <Item key={item.id} item={item} />)}
       </div>
     </>
   )

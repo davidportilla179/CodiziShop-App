@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Spinner from "./Spinner";
 
 const itemsArray = [
   { id: 1, title: "T-shirt", category: "tshirts", description: "Its a tshirt", stock: 10, price: "$299.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/machine_learning_tshirt_2.jpg" },
@@ -28,7 +29,7 @@ const ItemDetail = ({ id, setCartItems }) => {
   }, [id]);
 
   if(item === undefined) {
-    return <div>Loading...</div>
+    return <Spinner />
   }
 
   const reduceInitial = () => {
@@ -51,24 +52,24 @@ const ItemDetail = ({ id, setCartItems }) => {
             alt="..."
           />
         </div>
-        <div className="col-md-8">
+        <div className="col-md-8 px-4">
           <div className="card-body">
-            <div className="row">
+            <div className="row my-3">
               <div className="col-md-6">
-                <h5 className="card-title">{item.title}</h5>
+                <h2 className="card-title">{item.title}</h2>
               </div>
               <div className="col-md-6">
                 <p className="card-text">{item.price}</p>
               </div>
             </div>
-            <p className="card-text">{item.description}</p>
-            <div className="d-flex mt-3">
+            <p className="card-text mb-3">{item.description}</p>
+            <div className="d-flex my-5">
               <button className={item.stock ? "btn btn-danger" : "btn btn-secondary"} onClick={reduceInitial}>-</button>
               <p className="mx-5"> {initial} </p>
               <button className={item.stock ? "btn btn-success" : "btn btn-secondary"} onClick={() => addInitial(item.stock)}>+</button>
             </div>
             <button className="btn btn-outline-primary mt-3" onClick={() => setCartItems(initial)}>Añadir al carrito</button>
-            <p className="text-muted text-center border border-secondary mt-4">Stock: {item.stock} left</p>
+            <p className="text-muted text-center border border-secondary mt-5">Stock: {item.stock} left</p>
           </div>
         </div>
       </div>

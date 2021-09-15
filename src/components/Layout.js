@@ -1,10 +1,7 @@
-import { useState } from 'react';
 import NavBar from './NavBar';
 import Footer from './Footer';
 
-const Layout = ({ children }) => {
-  const [stock, setStock] = useState(5);
-  const [cartItems, setCartItems] = useState(0);
+const Layout = ({ children, cartItems }) => {
   return (
     <>
       <NavBar cartItems={cartItems} />
