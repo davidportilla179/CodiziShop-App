@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/CodiziShop-App/static/css/main.fbd20893.chunk.css",
+    "main.js": "/CodiziShop-App/static/js/main.6ef43481.chunk.js",
+    "main.js.map": "/CodiziShop-App/static/js/main.6ef43481.chunk.js.map",
+    "runtime-main.js": "/CodiziShop-App/static/js/runtime-main.b21b3e20.js",
+    "runtime-main.js.map": "/CodiziShop-App/static/js/runtime-main.b21b3e20.js.map",
+    "static/js/2.1fa86878.chunk.js": "/CodiziShop-App/static/js/2.1fa86878.chunk.js",
+    "static/js/2.1fa86878.chunk.js.map": "/CodiziShop-App/static/js/2.1fa86878.chunk.js.map",
+    "static/js/3.20df0c39.chunk.js": "/CodiziShop-App/static/js/3.20df0c39.chunk.js",
+    "static/js/3.20df0c39.chunk.js.map": "/CodiziShop-App/static/js/3.20df0c39.chunk.js.map",
+    "index.html": "/CodiziShop-App/index.html",
+    "static/css/main.fbd20893.chunk.css.map": "/CodiziShop-App/static/css/main.fbd20893.chunk.css.map",
+    "static/js/2.1fa86878.chunk.js.LICENSE.txt": "/CodiziShop-App/static/js/2.1fa86878.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b21b3e20.js",
+    "static/js/2.1fa86878.chunk.js",
+    "static/css/main.fbd20893.chunk.css",
+    "static/js/main.6ef43481.chunk.js"
+  ]
+}
