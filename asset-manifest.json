@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/CodiziShop-App/static/css/main.fbd20893.chunk.css",
-    "main.js": "/CodiziShop-App/static/js/main.6ef43481.chunk.js",
-    "main.js.map": "/CodiziShop-App/static/js/main.6ef43481.chunk.js.map",
+    "main.js": "/CodiziShop-App/static/js/main.af7fd7c3.chunk.js",
+    "main.js.map": "/CodiziShop-App/static/js/main.af7fd7c3.chunk.js.map",
     "runtime-main.js": "/CodiziShop-App/static/js/runtime-main.b21b3e20.js",
     "runtime-main.js.map": "/CodiziShop-App/static/js/runtime-main.b21b3e20.js.map",
     "static/js/2.1fa86878.chunk.js": "/CodiziShop-App/static/js/2.1fa86878.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.b21b3e20.js",
     "static/js/2.1fa86878.chunk.js",
     "static/css/main.fbd20893.chunk.css",
-    "static/js/main.6ef43481.chunk.js"
+    "static/js/main.af7fd7c3.chunk.js"
   ]
 }
