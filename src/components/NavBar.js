@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import CartWidget from './CartWidget';
 
 const NavBar = ({ cartItems }) => {
@@ -24,7 +24,9 @@ const NavBar = ({ cartItems }) => {
             </li>
           </ul>
           <div className="d-flex justify-content-around align-items-center">
-            <CartWidget cartItems={cartItems} />
+            <Link to='/cart'>
+              <CartWidget cartItems={cartItems} />
+            </Link>
             <button className="btn btn-outline-success" type="submit">Log In</button>
             <button className="btn btn-success" type="submit">Register</button>
           </div>

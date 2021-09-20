@@ -5,6 +5,7 @@ import NotFound from '../containers/NotFound';
 import Home from '../containers/Home';
 import ProductsGallery from '../containers/ProductsGallery';
 import Product from '../containers/Product';
+import Checkout from '../containers/Checkout'
 
 function App() {
   const [cartItems, setCartItems] = useState(0);
@@ -15,6 +16,7 @@ function App() {
         <Route exact path='/' component={Home} />
         <Route exact path='/products/:category' component={ProductsGallery} />
         <Route exact path='/products/:category/:id' render ={() => <Product setCartItems={setCartItems}/>} />
+        <Route exact path='/cart' component={Checkout} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
