@@ -1,10 +1,10 @@
 import NavBar from './NavBar';
 import Footer from './Footer';
 
-const Layout = ({ children, cartItems }) => {
+const Layout = ({ children }) => {
   return (
     <>
-      <NavBar cartItems={cartItems} />
+      <NavBar />
       { children }
       <Footer />
     </>

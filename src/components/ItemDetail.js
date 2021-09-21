@@ -1,5 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { CartContext } from '../context/CartContext';
+
 import Spinner from "./Spinner";
+
+
 
 const itemsArray = [
   { id: 1, title: "T-shirt", category: "tshirts", description: "Its a tshirt", stock: 10, price: "$299.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/machine_learning_tshirt_2.jpg" },
@@ -13,7 +17,8 @@ function getListItems() {
   });
 }
 
-const ItemDetail = ({ id, setCartItems }) => {
+const ItemDetail = ({ id }) => {
+  const { addToCart } = useContext(CartContext);
   const [item, setItem] = useState();
   const [initial, setInitial] = useState(0);
 
@@ -68,7 +73,7 @@ const ItemDetail = ({ id, setCartItems }) => {
               <p className="mx-5"> {initial} </p>
               <button className={item.stock ? "btn btn-success" : "btn btn-secondary"} onClick={() => addInitial(item.stock)}>+</button>
             </div>
-            <button className="btn btn-outline-primary mt-3" onClick={() => setCartItems(initial)}>Añadir al carrito</button>
+            <button className={`btn btn-outline-primary mt-3 ${item.stock ? 'enabled' : 'disabled'}`} onClick={() => {addToCart(item, initial); setInitial(0)}}>Añadir al carrito</button>
             <p className="text-muted text-center border border-secondary mt-5">Stock: {item.stock} left</p>
           </div>
         </div>
