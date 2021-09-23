@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import Item from './Item';
 import Spinner from "./Spinner";
 
@@ -43,4 +43,4 @@ const ItemList = ({ filter }) => {
   )
 }
 
-export default ItemList;
+export default memo(ItemList);

@@ -1,9 +1,9 @@
 import { useEffect, useState, useContext } from "react";
+import { Link } from 'react-router-dom';
+
 import { CartContext } from '../context/CartContext';
 
 import Spinner from "./Spinner";
-
-
 
 const itemsArray = [
   { id: 1, title: "T-shirt", category: "tshirts", description: "Its a tshirt", stock: 10, price: "$299.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/machine_learning_tshirt_2.jpg" },
@@ -21,6 +21,7 @@ const ItemDetail = ({ id }) => {
   const { addToCart } = useContext(CartContext);
   const [item, setItem] = useState();
   const [initial, setInitial] = useState(0);
+  const [goCart, setGoCart] = useState(false);
 
   useEffect(() => {
     const list = getListItems();
@@ -45,6 +46,12 @@ const ItemDetail = ({ id }) => {
   const addInitial = (stock) => {
     if (initial === stock) return;
     setInitial(initial + 1);
+  };
+
+  const addItemtoCart = (item, initial) => {
+    addToCart(item, initial);
+    setInitial(0);
+    setGoCart(true);
   };
 
   return (
@@ -73,7 +80,12 @@ const ItemDetail = ({ id }) => {
               <p className="mx-5"> {initial} </p>
               <button className={item.stock ? "btn btn-success" : "btn btn-secondary"} onClick={() => addInitial(item.stock)}>+</button>
             </div>
-            <button className={`btn btn-outline-primary mt-3 ${item.stock ? 'enabled' : 'disabled'}`} onClick={() => {addToCart(item, initial); setInitial(0)}}>Añadir al carrito</button>
+            <div className="d-flex">
+              <button className={`btn btn-outline-primary mt-3 ${item.stock ? 'enabled' : 'disabled'}`} onClick={() => {addItemtoCart(item, initial)}}>Añadir al carrito</button>
+              <Link to="/cart">
+                <button className={`btn btn-info mt-3 mx-3 ${goCart ? 'd-block' : 'd-none'}`} >Ver tu carrito</button>
+              </Link>
+            </div>
             <p className="text-muted text-center border border-secondary mt-5">Stock: {item.stock} left</p>
           </div>
         </div>

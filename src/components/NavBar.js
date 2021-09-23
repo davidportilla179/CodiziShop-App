@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import { NavLink, Link } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
+
 import CartWidget from './CartWidget';
 
 const NavBar = () => {
+  const { userData, logOut } = useContext(UserContext);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -23,12 +28,20 @@ const NavBar = () => {
               <NavLink to="/products/stickers" className="nav-link">Stickers</NavLink>
             </li>
           </ul>
-          <div className="d-flex justify-content-around align-items-center">
-            <Link to='/cart'>
-              <CartWidget/>
-            </Link>
-            <button className="btn btn-outline-success" type="submit">Log In</button>
-            <button className="btn btn-success" type="submit">Register</button>
+          <div className="d-flex align-items-center">
+            {
+              userData
+              ? <>
+                  <Link to='/cart'><CartWidget/></Link>
+                  <i className="far fa-user-circle fa-2x"></i>
+                  <p className="m-3">David</p>
+                  <button className="btn btn-success" type="button" onClick={() => logOut()}>Log Out</button>
+                </>
+              : <>
+                  <Link to='/login'><button className="btn btn-outline-success" type="submit">Log In</button></Link>
+                  <button className="btn btn-success" type="submit">Register</button>
+                </>
+            }
           </div>
         </div>
       </div>

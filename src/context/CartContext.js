@@ -2,22 +2,6 @@ import { useState, useEffect, createContext } from "react";
 
 export const CartContext = createContext();
 
-const itemObject = [
-  {
-    quantity: 3,
-    item: {
-      id: 1,
-      title: "T-shirt",
-      category: "tshirts",
-      description: "Its a tshirt",
-      stock: 10,
-      price: "$299.00 MXN",
-      pictureUrl:
-      "https://shop.codiziapp.com/wp-content/uploads/2021/07/machine_learning_tshirt_2.jpg",
-    }
-  },
-];
-
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [quantityItems, setQuantityItems] = useState(0);
@@ -62,6 +46,10 @@ export const CartProvider = ({ children }) => {
     setCart(cart.filter((cartItem) => cartItem.item.id !== item.id));
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   //Actualiza la cantidad de un producto en el carrito
   const updateQuantityItem = (item, quantity) => {
     const cartItemExists = cart.find(
@@ -84,6 +72,7 @@ export const CartProvider = ({ children }) => {
         addToCart,
         updateQuantityItem,
         removeFromCart,
+        clearCart,
         quantityItems
       }}
     >
