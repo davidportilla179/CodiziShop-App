@@ -34,7 +34,7 @@ const NavBar = () => {
               ? <>
                   <Link to='/cart'><CartWidget/></Link>
                   <i className="far fa-user-circle fa-2x"></i>
-                  <p className="m-3">David</p>
+                  <p className="m-3">{ userData.name }</p>
                   <button className="btn btn-success" type="button" onClick={() => logOut()}>Log Out</button>
                 </>
               : <>

@@ -27,14 +27,14 @@ const ItemList = ({ filter }) => {
     //     filter ? setItems(data.filter(item => item.category === filter)) : setItems(data);
     //   })
     //   .catch(err=> console.log(err));
-    console.log('filter', filter);
+    // console.log('filter', filter);
     if(!filter) {
       getDocs(collection(db,'items'))
         .then((querySnapshot) => {
           const products = querySnapshot.docs.map(doc => {
             return {id: doc.id, ...doc.data()};
           });
-          console.log("!filter");
+          // console.log("!filter");
           console.log(products);
           setItems(products);
         })
@@ -46,7 +46,7 @@ const ItemList = ({ filter }) => {
           const products = querySnapshot.docs.map(doc => {
             return {id: doc.id, ...doc.data()};
           });
-          console.log("filter");
+          // console.log("filter");
           console.log(products);
           setItems(products);
         })

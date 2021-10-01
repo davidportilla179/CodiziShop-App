@@ -2,16 +2,16 @@ import { useState, createContext } from "react";
 
 export const UserContext = createContext();
 
-const user = [
-  {
-    id: 1,
-    name: "David",
-    email: "email@example.com",
-    cart: [],
-    address: [],
-    orders: [],
-  },
-];
+// const user = [
+//   {
+//     id: 1,
+//     name: "David",
+//     email: "email@example.com",
+//     cart: [],
+//     address: [],
+//     orders: [],
+//   },
+// ];
 
 export const UserProvider = ({ children }) => {
   const [userData, setUserData] = useState();

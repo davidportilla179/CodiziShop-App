@@ -10,7 +10,8 @@ const Login = () => {
 
   const [form, setForm] = useState({
     email: '',
-    password: ''
+    password: '',
+    name: 'David',
   });
 
   const handleInput = event => {
