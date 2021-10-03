@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/CodiziShop-App/static/css/main.da047a07.chunk.css",
-    "main.js": "/CodiziShop-App/static/js/main.26134693.chunk.js",
-    "main.js.map": "/CodiziShop-App/static/js/main.26134693.chunk.js.map",
-    "runtime-main.js": "/CodiziShop-App/static/js/runtime-main.96043db9.js",
-    "runtime-main.js.map": "/CodiziShop-App/static/js/runtime-main.96043db9.js.map",
+    "main.js": "/CodiziShop-App/static/js/main.9048b214.chunk.js",
+    "main.js.map": "/CodiziShop-App/static/js/main.9048b214.chunk.js.map",
+    "runtime-main.js": "/CodiziShop-App/static/js/runtime-main.3526034a.js",
+    "runtime-main.js.map": "/CodiziShop-App/static/js/runtime-main.3526034a.js.map",
     "static/css/2.53150396.chunk.css": "/CodiziShop-App/static/css/2.53150396.chunk.css",
-    "static/js/2.e1e4bee4.chunk.js": "/CodiziShop-App/static/js/2.e1e4bee4.chunk.js",
-    "static/js/2.e1e4bee4.chunk.js.map": "/CodiziShop-App/static/js/2.e1e4bee4.chunk.js.map",
-    "static/js/3.64312381.chunk.js": "/CodiziShop-App/static/js/3.64312381.chunk.js",
-    "static/js/3.64312381.chunk.js.map": "/CodiziShop-App/static/js/3.64312381.chunk.js.map",
+    "static/js/2.f36e4ee4.chunk.js": "/CodiziShop-App/static/js/2.f36e4ee4.chunk.js",
+    "static/js/2.f36e4ee4.chunk.js.map": "/CodiziShop-App/static/js/2.f36e4ee4.chunk.js.map",
+    "static/js/3.88b1deb2.chunk.js": "/CodiziShop-App/static/js/3.88b1deb2.chunk.js",
+    "static/js/3.88b1deb2.chunk.js.map": "/CodiziShop-App/static/js/3.88b1deb2.chunk.js.map",
     "index.html": "/CodiziShop-App/index.html",
     "static/css/2.53150396.chunk.css.map": "/CodiziShop-App/static/css/2.53150396.chunk.css.map",
     "static/css/main.da047a07.chunk.css.map": "/CodiziShop-App/static/css/main.da047a07.chunk.css.map",
-    "static/js/2.e1e4bee4.chunk.js.LICENSE.txt": "/CodiziShop-App/static/js/2.e1e4bee4.chunk.js.LICENSE.txt"
+    "static/js/2.f36e4ee4.chunk.js.LICENSE.txt": "/CodiziShop-App/static/js/2.f36e4ee4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.96043db9.js",
+    "static/js/runtime-main.3526034a.js",
     "static/css/2.53150396.chunk.css",
-    "static/js/2.e1e4bee4.chunk.js",
+    "static/js/2.f36e4ee4.chunk.js",
     "static/css/main.da047a07.chunk.css",
-    "static/js/main.26134693.chunk.js"
+    "static/js/main.9048b214.chunk.js"
   ]
 }
