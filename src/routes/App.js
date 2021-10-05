@@ -13,6 +13,7 @@ import Product from '../containers/Product';
 import Checkout from '../containers/Checkout';
 import Login from '../containers/Login';
 import Success from '../containers/Success';
+import Payment from '../containers/Payment';
 
 function App() {
   const { userData } = useContext(UserContext);
@@ -26,6 +27,7 @@ function App() {
             <Route exact path='/products/:category/:id' component={Product} />
             <Route exact path='/login' component={Login} />
             <PrivateRoute exact path="/cart" component={Checkout} user={userData} />
+            <PrivateRoute exact path="/payment" component={Payment} user={userData} />
             <PrivateRoute exact path="/success" component={Success} user={userData} />
             <Route component={NotFound} />
           </Switch>

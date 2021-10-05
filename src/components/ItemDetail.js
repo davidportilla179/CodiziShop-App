@@ -8,18 +8,6 @@ import { doc, getDoc } from "@firebase/firestore";
 
 import Spinner from "./Spinner";
 
-// const itemsArray = [
-//   { id: 1, title: "T-shirt", category: "tshirts", description: "Its a tshirt", stock: 10, price: "$299.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/machine_learning_tshirt_2.jpg" },
-//   { id: 2, title: "Hoddie", category: "hoddies", description: "Its a hoddie", stock: 0, price: "$599.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/its_python_tshirt_1.jpg" },
-//   { id: 3, title: "Shirt", category: "tshirts", description: "Its a shirt", stock: 2 , price: "$199.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/microcontroller_electronic_tshirt_2.jpg"},
-// ];
-
-// function getListItems() {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => resolve(itemsArray), 2000);
-//   });
-// }
-
 const ItemDetail = ({ id }) => {
   const { addToCart } = useContext(CartContext);
   const [item, setItem] = useState();
@@ -27,10 +15,6 @@ const ItemDetail = ({ id }) => {
   const [goCart, setGoCart] = useState(false);
 
   useEffect(() => {
-    // const list = getListItems();
-    // list
-    //   .then((data) => setItem(data.find((item) => item.id === parseInt(id))))
-    //   .catch(err=> console.log(err));
     getDoc(doc(db, 'items', id))
       .then((querySnapshot) => {
         console.log({ id: querySnapshot.id, ...querySnapshot.data() });
@@ -66,7 +50,7 @@ const ItemDetail = ({ id }) => {
 
   return (
     <div className="card mb-4 shadow-sm">
-      <div className="row g-0">
+      <div className="row g-0 align-items-center">
         <div className="col-md-4">
           <img
             src={item.pictureUrl}
@@ -81,7 +65,7 @@ const ItemDetail = ({ id }) => {
                 <h2 className="card-title">{item.title}</h2>
               </div>
               <div className="col-md-6">
-                <p className="card-text">{item.price}</p>
+                <p className="h2 card-text">$ {item.price}.00 MXN</p>
               </div>
             </div>
             <p className="card-text mb-3">{item.description}</p>

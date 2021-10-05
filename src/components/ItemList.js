@@ -11,30 +11,16 @@ import { collection, getDocs, query, where } from "@firebase/firestore";
 //   { id: 3, title: "Shirt", category: "tshirts", description: "Its a shirt", stock: 2 , price: "$199.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/microcontroller_electronic_tshirt_2.jpg"},
 // ];
 
-// function getListItems() {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => resolve(itemsArray), 2000);
-//   });
-// }
-
 const ItemList = ({ filter }) => {
   const [items, setItems] = useState(undefined);
 
   useEffect(() => {
-    // const list = getListItems();
-    // list
-    //   .then((data) => {
-    //     filter ? setItems(data.filter(item => item.category === filter)) : setItems(data);
-    //   })
-    //   .catch(err=> console.log(err));
-    // console.log('filter', filter);
     if(!filter) {
       getDocs(collection(db,'items'))
         .then((querySnapshot) => {
           const products = querySnapshot.docs.map(doc => {
             return {id: doc.id, ...doc.data()};
           });
-          // console.log("!filter");
           console.log(products);
           setItems(products);
         })
@@ -46,7 +32,6 @@ const ItemList = ({ filter }) => {
           const products = querySnapshot.docs.map(doc => {
             return {id: doc.id, ...doc.data()};
           });
-          // console.log("filter");
           console.log(products);
           setItems(products);
         })
