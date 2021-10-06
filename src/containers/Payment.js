@@ -2,7 +2,6 @@ import { useState, useRef, useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
 import { CartContext } from '../context/CartContext';
-import { UserContext } from '../context/UserContext';
 
 import { PayPalButton } from 'react-paypal-button-v2';
 import {
@@ -41,12 +40,11 @@ const ItemPayment = ({ item, quantity }) => {
 const Payment = () => {
   const [buyerInfo, setBuyerInfo] = useState(undefined);
   const form = useRef(null);
-  const { cart, getTotal } = useContext(CartContext);
-  const { userData } = useContext(UserContext);
+  const { cart, getTotal, clearCart } = useContext(CartContext);
   const history = useHistory();
 
   const paypalOptions = {
-    cliendId: 'access_token$sandbox$9s9qdqxks8t2yxg6$4e4f7675f6db4c667decaf71e78873b7',
+    cliendId: process.env.REACT_APP_cliendIdPaypal,
     intent: 'capture',
     currency: 'MXN',
   };
@@ -73,7 +71,6 @@ const Payment = () => {
         'phone': formData.get('phone'),
       }
       setBuyerInfo(buyer);
-      console.log(buyer);
     }
   }
 
@@ -82,50 +79,43 @@ const Payment = () => {
     console.log(data.status);
     console.log(buyerInfo);
 
-    // if(data.status === 'COMPLETED'){
-    //   const newOrder = {
-    //     buyer,
-    //     product:cart,
-    //     payment:data
-    //   }
-    //   addNewOrder(newOrder, history.push('/checkout/success'));
-    // }
-    // const objOrder = {
-    //   buyer: { email: userData.email, name: userData.name },
-    //   items: cart,
-    //   date: Timestamp.fromDate(new Date()),
-    //   total: getTotal(),
-    // };
+    if(data.status === 'COMPLETED'){
+      const objOrder = {
+        buyer: buyerInfo,
+        items: cart,
+        date: Timestamp.fromDate(new Date()),
+        total: getTotal(),
+        payment: data
+      }
 
-    // const batch = writeBatch(db)
-    // const outOfStock = []
+      const batch = writeBatch(db)
+      const outOfStock = []
 
-    // objOrder.items.forEach((prod, i) => {
-    //   getDoc(doc(db, 'items', prod.item.id)).then(DocumentSnapshot => {
-    //       if(DocumentSnapshot.data().stock >= objOrder.items[i].quantity) {
-    //           batch.update(doc(db, 'items', DocumentSnapshot.id), {
-    //               stock: DocumentSnapshot.data().stock - objOrder.items[i].quantity
-    //           })
-    //       } else {
-    //           outOfStock.push({...DocumentSnapshot.data(), id: DocumentSnapshot.id})
-    //       }
-    //   })
-    // })
+      objOrder.items.forEach((prod, i) => {
+        getDoc(doc(db, 'items', prod.item.id)).then(DocumentSnapshot => {
+            if(DocumentSnapshot.data().stock >= objOrder.items[i].quantity) {
+                batch.update(doc(db, 'items', DocumentSnapshot.id), {
+                    stock: DocumentSnapshot.data().stock - objOrder.items[i].quantity
+                })
+            } else {
+                outOfStock.push({...DocumentSnapshot.data(), id: DocumentSnapshot.id})
+            }
+        })
+      })
 
-    // if(outOfStock.length === 0) {
-    //   addDoc(collection(db, 'orders'), objOrder).then(() => {
-    //     batch.commit().then(() => {
-    //       console.log('success', 'La orden se ejecuto con exito');
-    //       history.push("/success");
-    //     })
-    //   }).catch((error) => {
-    //     console.log(error,'Error al ejecutar la orden')
-    //   }).finally(() => {
-    //       clearCart()
-    //   })
-    // }
-
-    // history.push('/success');
+      if(outOfStock.length === 0) {
+        addDoc(collection(db, 'orders'), objOrder).then(() => {
+          batch.commit().then(() => {
+            console.log('success', 'La orden se ejecuto con exito');
+            history.push("/success");
+          })
+        }).catch((error) => {
+          console.log(error,'Error al ejecutar la orden')
+        }).finally(() => {
+            clearCart()
+        })
+      }
+    }
   };
 
   return (
@@ -180,7 +170,7 @@ const Payment = () => {
           </div>
 
           {
-            buyerInfo && 
+            buyerInfo &&
               (
                 <>
                   <h3 className="mb-4">Método de pago:</h3>
