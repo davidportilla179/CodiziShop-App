@@ -36,7 +36,6 @@ const ItemPayment = ({ item, quantity }) => {
   )
 };
 
-
 const Payment = () => {
   const [buyerInfo, setBuyerInfo] = useState(undefined);
   const form = useRef(null);
@@ -75,10 +74,6 @@ const Payment = () => {
   }
 
   const completeOrder = (data) => {
-    console.log(data);
-    console.log(data.status);
-    console.log(buyerInfo);
-
     if(data.status === 'COMPLETED'){
       const objOrder = {
         buyer: buyerInfo,
