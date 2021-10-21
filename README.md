@@ -1,13 +1,19 @@
 # CODIZI Shop
 
-El proyecto consta de una plataforma donde los usuarios pueden encontrar nuevos lugares en distintas ubicaciones del mundo. Cada usuario puede publicar, compartir e interactuar con las publicaciones de la plataforma.
+El proyecto consta de un ecommerce donde se venden productos con temática de electrónica y programación
 
 ![codizishop](https://shop.codiziapp.com/wp-content/uploads/2021/09/COVER-CODIZISHOP.jpg)
 
 ## CODIZI ship en **GitHub Pages**
-Entra en el siguiente link para interactuar con la aplicación de PLCS
+Entra en el siguiente link para interactuar con la aplicación de CODIZI Shop:
 
 https://davidportilla179.github.io/CodiziShop-App/#/
+
+Para probar el login de la aplicación puedes utilizar la siguiente cuenta:
+```
+email: david@gmail.com
+password: 123456
+```
 
 ## Comenzando 🚀
 
