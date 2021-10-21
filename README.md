@@ -104,6 +104,10 @@ date (timestamp)
 Para que funcione el login y el register de la aplicación, se debe configurar el Sign-in method en la pestaña de Authentication.
 Solo habilita el proveedor "Correo electrónico/contraseña" y tendrás funcionando el login y el register en la app.
 
+## Paypal 💵
+Para que funcione el pago con Paypal tendrás que obtener el clientId de tu cuenta de Paypal Developer y añadelo al archivo .env.
+Recuerda poner el clientId para el modo Sandbox para hacer tus pruebas.
+
 ## Despliegue 📦
 
 Create-React-App tiene configurado un comando para realizar un deploy de la aplicación, creando una carpeta dentro del proyecto llamada **dist**.
