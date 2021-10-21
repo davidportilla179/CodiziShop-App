@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useHistory } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 
 import CartWidget from './CartWidget';
 
 const NavBar = () => {
   const { userData, logOut } = useContext(UserContext);
+  let history = useHistory();
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -34,12 +35,12 @@ const NavBar = () => {
               ? <>
                   <Link to='/cart'><CartWidget/></Link>
                   <i className="far fa-user-circle fa-2x"></i>
-                  <p className="m-3">{ userData.name }</p>
-                  <button className="btn btn-success" type="button" onClick={() => logOut()}>Log Out</button>
+                  <p className="m-3">{ userData.email }</p>
+                  <button className="btn btn-success" type="button" onClick={() =>{logOut(); history.push("/");}}>Log Out</button>
                 </>
               : <>
                   <Link to='/login'><button className="btn btn-outline-success" type="submit">Log In</button></Link>
-                  <button className="btn btn-success" type="submit">Register</button>
+                  <Link to='/register'><button className="btn btn-success" type="submit">Register</button></Link>
                 </>
             }
           </div>

@@ -12,6 +12,7 @@ import ProductsGallery from '../containers/ProductsGallery';
 import Product from '../containers/Product';
 import Checkout from '../containers/Checkout';
 import Login from '../containers/Login';
+import Register from '../containers/Register';
 import Success from '../containers/Success';
 import Payment from '../containers/Payment';
 
@@ -26,6 +27,7 @@ function App() {
             <Route exact path='/products/:category' component={ProductsGallery} />
             <Route exact path='/products/:category/:id' component={Product} />
             <Route exact path='/login' component={Login} />
+            <Route exact path='/register' component={Register} />
             <PrivateRoute exact path="/cart" component={Checkout} user={userData} />
             <PrivateRoute exact path="/payment" component={Payment} user={userData} />
             <PrivateRoute exact path="/success" component={Success} user={userData} />

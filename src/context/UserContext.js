@@ -1,5 +1,6 @@
-import { useState, createContext } from "react";
-
+import { useState, createContext, useEffect } from "react";
+import { auth } from "../services/firebase/firebase";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 export const UserContext = createContext();
 
 // const user = [
@@ -16,12 +17,45 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [userData, setUserData] = useState();
 
-  const logIn = (userData) => {
-    setUserData(userData);
+  const signup = (email, password) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        setUserData(userCredential.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
+  const logIn = (email, password) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        setUserData(userCredential.user);
+        console.log(userCredential);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    //setUserData(userData);
+  };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserData(user);
+      } else {
+        setUserData(undefined);
+      }
+    });
+    // return unsubscribe;
+  }, []);
+
   const logOut = () => {
-    setUserData(undefined);
+    signOut(auth).then(() => {
+      setUserData(undefined);
+    }).catch((error) => {
+      console.log(error);
+    });
   };
 
   return (
@@ -30,6 +64,7 @@ export const UserProvider = ({ children }) => {
         userData,
         logIn,
         logOut,
+        signup,
       }}
     >
       {children}

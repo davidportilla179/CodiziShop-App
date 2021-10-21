@@ -2,28 +2,28 @@ import { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 
-import '../assets/css/login.css';
+import '../assets/css/register.css';
 
 const Login = () => {
-  const { logIn } = useContext(UserContext);
+  const { signup } = useContext(UserContext);
   let history = useHistory();
-  
+
   const [form, setForm] = useState({
     email: '',
     password: '',
   });
-  
+
   const [loading, setLoading] = useState(false);
 
   const handleInput = event => {
     setForm({ ...form, [event.target.name]: event.target.value });
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       setLoading(true);
-      logIn(form.email, form.password);
+      signup(form.email, form.password);
     } catch (error) {
       console.log(error);
     }
@@ -40,7 +40,7 @@ const Login = () => {
             <div className="container">
               <div className="row">
                 <div className="col-lg-10 col-xl-7 mx-auto">
-                  <h3 className="display-4">Hola de nuevo!</h3>
+                  <h3 className="display-4">Bienvenido!</h3>
                   <p className="text-muted mb-4">Explora y comparte lugares extraordinarios.</p>
                     <form onSubmit={handleSubmit}>
                       <div className="form-group mb-3">
@@ -73,7 +73,7 @@ const Login = () => {
                       <button 
                         type="submit" 
                         className={`btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm ${loading ? "disable": ""}`}>
-                          Log In
+                          Sign up
                       </button>
                     </form>
                 </div>

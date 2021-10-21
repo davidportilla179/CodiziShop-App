@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import * as firebase from "firebase/app";
+import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs, query, where } from "@firebase/firestore";
 
@@ -16,6 +17,7 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 export const getFirebase = () => app;
 export const db = getFirestore(app);
+export const auth = getAuth();
 
 // { id: 1, title: "T-shirt", category: "tshirts", description: "Its a tshirt", stock: 10, price: "$299.00 MXN", pictureUrl: "https://shop.codiziapp.com/wp-content/uploads/2021/07/machine_learning_tshirt_2.jpg" },
 export const getProducts = () => {
